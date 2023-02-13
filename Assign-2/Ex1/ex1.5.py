@@ -28,6 +28,6 @@ for i in range(0, 36):
 plt.plot(originoutput, label="origin")
 plt.plot(memooutput, label="memo")
 plt.xlabel("nth Fib Number")
-plt.ylabel("Time")
+plt.ylabel("Time (seconds)")
 plt.legend()
 plt.show()
