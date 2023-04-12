@@ -1,7 +1,5 @@
 package mylib.datastructures.linear;
 import mylib.datastructures.nodes.DNode;
-import mylib.datastructures.nodes.DNode;
-import mylib.datastructures.nodes.SNode;
 
 public class DLL {
 
@@ -113,7 +111,7 @@ public class DLL {
         this.size--;
     }
 
-    public void delete(DNode node) {
+    public boolean delete(DNode node) {
         if (this.head == null) {
             throw new NullPointerException();
         } else if (this.head == this.tail) {
@@ -136,6 +134,7 @@ public class DLL {
                 curr = curr.next;
             }
         }
+        return false;
     }
 
     public void sort() {

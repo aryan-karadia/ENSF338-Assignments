@@ -101,7 +101,7 @@ public class CDLL extends DLL {
         this.size--;
     }
 
-    public void delete(DNode node) {
+    public boolean delete(DNode node) {
         if (this.head == null) {
             throw new NullPointerException();
         } else if (this.head == this.tail) {
@@ -123,6 +123,7 @@ public class CDLL extends DLL {
                 curr = curr.next;
             }
         }
+        return false;
     }
 
     public void sort() {
@@ -131,7 +132,7 @@ public class CDLL extends DLL {
         }
         DNode curr = this.head;
         DNode next = curr.next;
-        DNode temp = null;
+        DNode temp;
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size - 1; j++) {
                 if (curr.value > next.value) {

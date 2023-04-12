@@ -5,9 +5,9 @@ import mylib.datastructures.linear.DLL;
 import mylib.datastructures.nodes.DNode;
 
 import mylib.datastructures.linear.CSLL;
-import mylib.datastructures.nodes.SNode;
 
 import mylib.datastructures.linear.CDLL;
+
 import mylib.datastructures.linear.QueueLL;
 import mylib.datastructures.linear.StackLL;
 import mylib.datastructures.nodes.TNode;
@@ -378,7 +378,7 @@ public class Main {
     /** Testing CSLL **/
 
     @Test
-    public void testEmptyConstructor() {
+    public void testCSLLEmptyConstructor() {
         CSLL list = new CSLL();
         assertTrue(list.isEmpty());
         assertEquals(0, list.getSize());
@@ -387,7 +387,7 @@ public class Main {
     }
 
     @Test
-    public void testSingleNodeConstructor() {
+    public void testCSLLSingleNodeConstructor() {
         SNode node = new SNode(42);
         CSLL list = new CSLL(node);
         assertFalse(list.isEmpty());
@@ -397,7 +397,7 @@ public class Main {
     }
 
     @Test
-    public void testInsertHead() {
+    public void testCSLLInsertHead() {
         CSLL list = new CSLL();
         SNode node = new SNode(42);
         list.insertHead(node);
@@ -414,7 +414,7 @@ public class Main {
     }
 
     @Test
-    public void testInsertTail() {
+    public void testCSLLInsertTail() {
         CSLL list = new CSLL();
         SNode node = new SNode(42);
         list.insertTail(node);
@@ -431,7 +431,7 @@ public class Main {
     }
 
     @Test
-    public void testInsertAtPosition() {
+    public void testCSLLInsertAtPosition() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -447,7 +447,7 @@ public class Main {
     }
 
     @Test
-    public void testSortedInsert() {
+    public void testCSLLSortedInsert() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -466,7 +466,7 @@ public class Main {
     }
 
     @Test
-    public void testRemoveHead() {
+    public void testCSLLRemoveHead() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -483,7 +483,7 @@ public class Main {
     }
 
     @Test
-    public void testRemoveTail() {
+    public void testCSLLRemoveTail() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -500,7 +500,7 @@ public class Main {
     }
 
     @Test
-    public void testRemoveAtPosition() {
+    public void testCSLLRemoveAtPosition() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -518,7 +518,7 @@ public class Main {
 
 
     @Test
-    public void testGetNodeAtPosition() {
+    public void testCSLLGetNodeAtPosition() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -533,7 +533,7 @@ public class Main {
     }
 
     @Test
-    public void testClearList() {
+    public void testCSLLClearList() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -549,7 +549,7 @@ public class Main {
     }
 
     @Test
-    public void testContains() {
+    public void testCSLLContains() {
         CSLL list = new CSLL();
         SNode node1 = new SNode(42);
         SNode node2 = new SNode(13);
@@ -562,4 +562,303 @@ public class Main {
     }
 
     /** Testing CDLL Class**/
+
+    @Test
+    public void testInsertHead() {
+        CDLL list = new CDLL();
+        DNode node = new DNode(1);
+        list.insertHead(node);
+        assertEquals(node, list.getHead());
+        assertEquals(node, list.getTail());
+        assertEquals(1, list.getSize());
+    }
+
+    @Test
+    public void testInsertTail() {
+        CDLL list = new CDLL();
+        DNode node = new DNode(1);
+        list.insertTail(node);
+        assertEquals(node, list.getHead());
+        assertEquals(node, list.getTail());
+        assertEquals(1, list.getSize());
+    }
+
+    @Test
+    public void testInsert() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        assertEquals(node1, list.getHead());
+        assertEquals(node2, list.getTail());
+        assertEquals(2, list.getSize());
+    }
+
+    @Test
+    public void testIsSorted() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.insert(node3, 2);
+        assertTrue(list.isSorted());
+        list.insertHead(node3);
+        assertFalse(list.isSorted());
+    }
+
+    @Test
+    public void testSearch() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.insert(node3, 2);
+        assertEquals(node2, list.search(node2));
+        assertNull(list.search(new DNode(4)));
+    }
+
+    @Test
+    public void testDeleteHead() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.deleteHead();
+        assertEquals(node2, list.getHead());
+        assertEquals(node2, list.getTail());
+        assertEquals(1, list.getSize());
+        list.deleteHead();
+        assertNull(list.getHead());
+        assertNull(list.getTail());
+        assertEquals(0, list.getSize());
+    }
+
+    @Test
+    public void testDeleteTail() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.deleteTail();
+        assertEquals(node1, list.getHead());
+        assertEquals(node1, list.getTail());
+        assertEquals(1, list.getSize());
+        list.deleteTail();
+        assertNull(list.getHead());
+        assertNull(list.getTail());
+        assertEquals(0, list.getSize());
+    }
+
+    @Test
+    public void testInsertAtIndex() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        DNode node4 = new DNode(4);
+        list.insert(node1, 0);
+        list.insert(node3, 1);
+        list.insert(node4, 2);
+        list.insert(node2, 1);
+        assertEquals(node1, list.getHead());
+        assertEquals(node4, list.getTail());
+        assertEquals(4, list.getSize());
+    }
+
+    @Test
+    public void testDelete() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.insert(node3, 2);
+        assertTrue(list.delete(node2));
+        assertEquals(node1, list.getHead());
+        assertEquals(node3, list.getTail());
+        assertEquals(2, list.getSize());
+        assertFalse(list.delete(new DNode(4)));
+    }
+
+    @Test
+    public void testToString() {
+        CDLL list = new CDLL();
+        DNode node1 = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        list.insertHead(node1);
+        list.insert(node2, 1);
+        list.insert(node3, 2);
+        assertEquals("[1, 2, 3]", list.toString());
+        list.deleteHead();
+        assertEquals("[2, 3]", list.toString());
+    }
+
+    @Test
+    public void testConstructorWithHead() {
+        DNode node = new DNode(1);
+        CDLL list = new CDLL(node);
+        assertEquals(node, list.getHead());
+        assertEquals(node, list.getTail());
+        assertEquals(1, list.getSize());
+        assertNull(list.getHead().prev);
+        assertNull(list.getTail().next);
+    }
+
+    /** Testing StackLL **/
+
+    @Test
+    public void testStackLLPush() {
+        StackLL stack = new StackLL();
+        SNode node = new SNode(1);
+        stack.push(node);
+        assertEquals(node, stack.peek());
+    }
+
+    @Test
+    public void testStackLLPop() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        SNode popped = stack.pop();
+        assertEquals(node2, popped);
+        assertEquals(node1, stack.peek());
+    }
+
+    @Test
+    public void testStackLLPeek() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        assertEquals(node2, stack.peek());
+        stack.pop();
+        assertEquals(node1, stack.peek());
+    }
+
+    @Test
+    public void testStackLLIsEmpty() {
+        StackLL stack = new StackLL();
+        assertTrue(stack.isEmpty());
+        SNode node = new SNode(1);
+        stack.push(node);
+        assertFalse(stack.isEmpty());
+    }
+
+    @Test
+    public void testStackLLClear() {
+        StackLL stack = new StackLL();
+        SNode node = new SNode(1);
+        stack.push(node);
+        stack.clear();
+        assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    public void testStackLLInsert() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.insert(node2, 1);
+        assertEquals(node2, stack.pop());
+        assertEquals(node1, stack.pop());
+    }
+
+    @Test
+    public void testStackLLInsertTail() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.insertTail(node2);
+        assertEquals(node2, stack.pop());
+        assertEquals(node1, stack.pop());
+    }
+
+    @Test
+    public void testStackLLDeleteHead() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        stack.deleteHead();
+        assertEquals(node1, stack.pop());
+    }
+
+    @Test
+    public void testStackLLDeleteTail() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        stack.deleteTail();
+        assertEquals(node2, stack.pop());
+    }
+
+    @Test
+    public void testStackLLDelete() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        stack.delete(node1);
+        assertEquals(node2, stack.pop());
+        assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    public void testStackLLConstructor() {
+        SNode node = new SNode(1);
+        StackLL stack = new StackLL(node);
+        assertEquals(node, stack.peek());
+    }
+
+    @Test
+    public void testStackLLDisplay() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        stack.push(node1);
+        stack.push(node2);
+        stack.display();
+        String expectedOutput = "2 1\n";
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void testStackLLIsSorted() {
+        StackLL stack = new StackLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        SNode node3 = new SNode(3);
+        stack.push(node1);
+        stack.push(node3);
+        stack.push(node2);
+        assertTrue(stack.isSorted());
+        stack.pop();
+        stack.push(new SNode(4));
+        assertFalse(stack.isSorted());
+    }
+
+    /** Testing StackLL **/
+
+
+
 }
