@@ -119,6 +119,7 @@ public class DLL {
         } else if (this.head == this.tail) {
             this.head = null;
             this.tail = null;
+            this.size--;
         } else if (this.head == node) {
             this.deleteHead();
         } else if (this.tail == node) {
@@ -142,30 +143,24 @@ public class DLL {
             return; // list is already sorted
         }
 
-        DNode prev = this.head;
-        DNode curr = prev.next;
-        while (curr != null) {
-            DNode insertPos = findInsertPosition(curr);
-
-            if (insertPos != prev) {
-                // remove curr from its current position and insert it at insertPos
-                curr.prev.next = curr.next;
-                if (curr.next != null) {
-                    curr.next.prev = curr.prev;
+        DNode current = null, index = null;
+        int temp;
+        //Check whether list is empty
+        if(head == null) {
+            return;
+        }
+        else {
+            //Current will point to head
+            for(current = head; current.next != null; current = current.next) {
+                //Index will point to node next to current
+                for(index = current.next; index != null; index = index.next) {
+                    //If current's data is greater than index's data, swap the data of current and index
+                    if(current.value > index.value) {
+                        temp = current.value;
+                        current.value = index.value;
+                        index.value = temp;
+                    }
                 }
-                curr.next = insertPos.next;
-                curr.prev = insertPos;
-                insertPos.next = curr;
-                if (curr.next != null) {
-                    curr.next.prev = curr;
-                }
-
-                // update curr to the next unsorted node
-                curr = prev.next;
-            } else {
-                // curr is already in the correct position, move on to the next unsorted node
-                prev = curr;
-                curr = curr.next;
             }
         }
     }

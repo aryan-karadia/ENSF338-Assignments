@@ -81,6 +81,9 @@ public class SLL {
     }
 
     private boolean isSorted() {
+        if (this.head == null) {
+            return true;
+        }
         SNode curr = this.head;
         while (curr.next != null) {
             if (curr.value > curr.next.value) {

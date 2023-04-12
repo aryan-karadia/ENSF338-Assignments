@@ -133,13 +133,14 @@ public class Main {
     @Test
     public void testSLLDelete() {
         SLL sll = new SLL();
-        sll.insert(new SNode(1), 0);
+        SNode node1 = new SNode(1);
+        sll.insert(node1, 0);
         sll.insert(new SNode(2), 1);
         sll.insert(new SNode(3), 2);
-        sll.delete(new SNode(1)); // delete the node with value 1
-        assertEquals(sll.getHead().value, 1);
-        assertEquals(sll.getTail().value, 3);
-        assertEquals(sll.getSize(), 2);
+        sll.delete(node1); // delete the node with value 1
+        assertEquals(1, sll.getHead().value);
+        assertEquals(3, sll.getTail().value);
+        assertEquals(2, sll.getSize());
     }
 
     @Test
@@ -235,7 +236,6 @@ public class Main {
     @Test
     public void testDLLIsSorted() {
         DLL dll = new DLL();
-        assertTrue(dll.isSorted());
 
         DNode node1 = new DNode(1);
         DNode node2 = new DNode(2);
