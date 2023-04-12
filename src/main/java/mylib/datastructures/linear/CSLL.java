@@ -1,6 +1,8 @@
 package mylib.datastructures.linear;
 import mylib.datastructures.nodes.SNode;
 
+import java.util.NoSuchElementException;
+
 public class CSLL extends SLL {
 
     private SNode head;
@@ -162,19 +164,105 @@ public class CSLL extends SLL {
                 prev.next = next;
                 curr.next = this.head;
                 this.head = curr;
-                curr = next;
-                next = next.next;
             } else {
                 prev = curr;
-                curr = next;
-                next = next.next;
             }
+            curr = next;
+            next = next.next;
         }
+    }
+
+    public SNode removeHead() {
+        if (isEmpty()) {
+            return null;
+        }
+        SNode removedNode = head;
+        if (head == tail) {
+            // there is only one node in the list
+            head = tail = null;
+        } else {
+            head = head.next;
+            tail.next = head; // make the tail point to the new head
+        }
+        size--;
+        return removedNode;
+    }
+
+    public SNode removeTail() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("List is empty");
+        }
+        if (getSize() == 1) {
+            head = null;
+            tail = null;
+            size = 0;
+            return null;
+        }
+        SNode curr = head;
+        while (curr.next != tail) {
+            curr = curr.next;
+        }
+        curr.next = head;
+        tail = curr;
+        size--;
+        return curr;
+    }
+
+    public boolean isEmpty() {
+        return this.head == null;
+    }
+
+    public SNode remove(SNode node) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("List is empty");
+        }
+        if (head == node) {
+            removeHead();
+        } else if (tail == node) {
+            removeTail();
+        } else {
+            SNode curr = head;
+            while (curr.next != node) {
+                curr = curr.next;
+            }
+            curr.next = node.next;
+            size--;
+        }
+        return node;
+    }
+
+    public boolean contains(SNode node) {
+        if (this.head != null) {
+            SNode curr = this.head;
+            while (curr != this.tail) {
+                if (curr == node) {
+                    return true;
+                }
+                curr = curr.next;
+            }
+            return curr == node;
+        }
+        return false;
+    }
+
+    public SNode getNode(int pos) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("List is empty");
+        }
+        if (pos < 0 || pos >= size) {
+            throw new IndexOutOfBoundsException("Invalid position: " + pos);
+        }
+        SNode curr = head;
+        for (int i = 0; i < pos; i++) {
+            curr = curr.next;
+        }
+        return curr;
     }
 
     public void clear() {
         super.clear();
     }
+
 
     public void print() {
         super.print();
