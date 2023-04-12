@@ -220,6 +220,27 @@ public class SLL {
         System.out.println("Sorted status: " + (sorted ? "sorted" : "unsorted"));
     }
 
+    public void reverse() {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        SNode prevNode = null;
+        SNode currNode = head;
+        SNode nextNode;
+
+        while (currNode != null) {
+            nextNode = currNode.next;
+            currNode.next = prevNode;
+            prevNode = currNode;
+            currNode = nextNode;
+        }
+
+        tail = head;
+        head = prevNode;
+    }
+
+
     // getters and setters
 
     public SNode getHead() {
