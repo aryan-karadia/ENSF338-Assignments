@@ -13,6 +13,7 @@ import mylib.datastructures.linear.QueueLL;
 
 import mylib.datastructures.nodes.TNode;
 import mylib.datastructures.trees.AVL;
+
 import mylib.datastructures.trees.BST;
 import mylib.datastructures.nodes.SNode;
 
@@ -716,6 +717,8 @@ public class Main {
 
     /** Testing StackLL **/
 
+    private AVL avl;
+
     @Test
     public void testStackLLPush() {
         StackLL stack = new StackLL();
@@ -978,6 +981,186 @@ public class Main {
 
         QueueLL invalidQueue = new QueueLL(invalidHead);
         assertFalse(invalidQueue.isSorted());
+    }
+
+    /** Testing AVL **/
+    @Test
+    public void testAVLConstructorWithNode() {
+        // Create a binary tree
+        TNode node1 = new TNode();
+        TNode node2 = new TNode();
+        TNode node3 = new TNode();
+        TNode node4 = new TNode();
+        TNode node5 = new TNode();
+        node1.setLeft(node2);
+        node2.setLeft(node3);
+        node2.setRight(node4);
+        node1.setRight(node5);
+
+        // Create a new AVL tree from the binary tree
+        AVL avl = new AVL(node1);
+
+        // Check that the AVL tree is balanced and has the correct structure
+        assertEquals(2, avl.getRoot().getData());
+        assertEquals(1, avl.getRoot().getLeft().getData());
+        assertEquals(4, avl.getRoot().getRight().getData());
+        assertEquals(3, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(5, avl.getRoot().getRight().getRight().getData());
+    }
+
+
+    public void setUp() {
+        avl = new AVL();
+    }
+
+    @Test
+    public void testEmptyAVL() {
+        assertNull(avl.getRoot());
+    }
+
+    @Test
+    public void testAVLInsert() {
+        avl.insert(4);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(1);
+        avl.insert(6);
+        avl.insert(5);
+        avl.insert(7);
+        assertEquals(4, avl.getRoot().getData());
+        assertEquals(2, avl.getRoot().getLeft().getData());
+        assertEquals(1, avl.getRoot().getLeft().getLeft().getData());
+        assertEquals(3, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(6, avl.getRoot().getRight().getData());
+        assertEquals(5, avl.getRoot().getRight().getLeft().getData());
+        assertEquals(7, avl.getRoot().getRight().getRight().getData());
+    }
+
+    @Test
+    public void testAVLDelete() {
+        avl.insert(4);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(1);
+        avl.insert(6);
+        avl.insert(5);
+        avl.insert(7);
+        avl.delete(1);
+        avl.delete(7);
+        avl.delete(2);
+        assertEquals(4, avl.getRoot().getData());
+        assertEquals(3, avl.getRoot().getLeft().getData());
+        assertEquals(6, avl.getRoot().getRight().getData());
+        assertEquals(5, avl.getRoot().getRight().getLeft().getData());
+        assertNull(avl.getRoot().getLeft().getLeft());
+        assertNull(avl.getRoot().getRight().getRight());
+        assertNull(avl.search(1));
+        assertNull(avl.search(7));
+        assertNull(avl.search(2));
+    }
+
+    @Test
+    public void testAVLSearch() {
+        avl.insert(4);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(1);
+        avl.insert(6);
+        avl.insert(5);
+        avl.insert(7);
+        TNode node = avl.search(6);
+        assertEquals(6, node.getData());
+        assertEquals(5, node.getLeft().getData());
+        assertEquals(7, node.getRight().getData());
+        assertNull(avl.search(8));
+    }
+
+    @Test
+    public void testPrintInOrder() {
+        avl.insert(4);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(1);
+        avl.insert(6);
+        avl.insert(5);
+        avl.insert(7);
+        avl.printInOrder(); // 1 2 3 4 5 6 7
+    }
+
+    @Test
+    public void testPrintBF() {
+        avl.insert(4);
+        avl.insert(2);
+        avl.insert(3);
+        avl.insert(1);
+        avl.insert(6);
+        avl.insert(5);
+        avl.insert(7);
+        avl.printBF(); // 4 2 6 1 3 5 7
+    }
+
+    @Test
+    public void testAVLInsertCase1() {
+        avl.insert(5);
+        avl.insert(10);
+        avl.insert(15);
+        avl.insert(20);
+        avl.insert(25);
+        avl.insert(30);
+        assertEquals(15, avl.getRoot().getData());
+        assertEquals(5, avl.getRoot().getLeft().getData());
+        assertEquals(10, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(20, avl.getRoot().getRight().getData());
+        assertEquals(25, avl.getRoot().getRight().getRight().getData());
+        assertEquals(30, avl.getRoot().getRight().getRight().getRight().getData());
+    }
+
+    @Test
+    public void testAVLInsertCase2() {
+        avl.insert(30);
+        avl.insert(25);
+        avl.insert(20);
+        avl.insert(15);
+        avl.insert(10);
+        avl.insert(5);
+        assertEquals(15, avl.getRoot().getData());
+        assertEquals(5, avl.getRoot().getLeft().getData());
+        assertEquals(10, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(20, avl.getRoot().getRight().getData());
+        assertEquals(25, avl.getRoot().getRight().getLeft().getData());
+        assertEquals(30, avl.getRoot().getRight().getRight().getData());
+    }
+
+    @Test
+    public void testAVLInsertCase3() {
+        avl.insert(30);
+        avl.insert(25);
+        avl.insert(35);
+        avl.insert(20);
+        avl.insert(27);
+        avl.insert(40);
+        assertEquals(30, avl.getRoot().getData());
+        assertEquals(25, avl.getRoot().getLeft().getData());
+        assertEquals(20, avl.getRoot().getLeft().getLeft().getData());
+        assertEquals(27, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(35, avl.getRoot().getRight().getData());
+        assertEquals(40, avl.getRoot().getRight().getRight().getData());
+    }
+
+    @Test
+    public void testAVLInsertCase4() {
+        avl.insert(5);
+        avl.insert(10);
+        avl.insert(8);
+        avl.insert(15);
+        avl.insert(12);
+        avl.insert(20);
+        assertEquals(10, avl.getRoot().getData());
+        assertEquals(5, avl.getRoot().getLeft().getData());
+        assertEquals(8, avl.getRoot().getLeft().getRight().getData());
+        assertEquals(15, avl.getRoot().getRight().getData());
+        assertEquals(12, avl.getRoot().getRight().getLeft().getData());
+        assertEquals(20, avl.getRoot().getRight().getRight().getData());
     }
 
 
