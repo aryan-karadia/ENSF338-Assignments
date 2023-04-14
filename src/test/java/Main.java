@@ -1343,9 +1343,7 @@ public class Main {
 
     @Test
     public void testDNodeInsertIntoEmptyList() {
-        DNode head = null;
         DNode node = new DNode(5);
-        head = node;
         assertNull(node.prev);
         assertNull(node.next);
     }
@@ -1394,12 +1392,9 @@ public class Main {
         head.next = node1;
         node2.prev = node1;
         node1.next = node2;
-        head = null;
-        node1 = null;
-        node2 = null;
-        assertNull(head);
-        assertNull(node1);
-        assertNull(node2);
+        assertNull(null);
+        assertNull(null);
+        assertNull(null);
     }
 
     @Test
@@ -1411,10 +1406,62 @@ public class Main {
         head.next = node1;
         node2.prev = node1;
         node1.next = node2;
-        head = null;
-        node1 = null;
         node2 = null;
-        assertTrue(head == null && node1 == null && node2 == null);
+        assertNull(node2);
     }
 
+    /** Testing SNode Class **/
+
+    @Test
+    public void testSNodeCreateEmpty() {
+        SNode node = new SNode(0);
+        assertNull(node.next);
+    }
+
+    @Test
+    public void testSNodeInsert() {
+        SNode node = new SNode(0);
+        node.setNext(new SNode(1));
+        assertNotNull(node.next);
+        assertEquals(1, node.next.value);
+    }
+
+    @Test
+    public void testSNodeSequenceInsertDelete() {
+        SNode node = new SNode(0);
+        node.setNext(new SNode(1));
+        node.next.setNext(new SNode(2));
+
+        assertNotNull(node.next.next);
+        assertEquals(2, node.next.next.value);
+
+        node.next = node.next.next;
+        assertNotNull(node.next);
+        assertEquals(2, node.next.value);
+
+        node.next = node.next.next;
+        assertNull(node.next);
+    }
+
+    @Test
+    public void testSNodeClear() {
+        SNode node = new SNode(0);
+        node.setNext(new SNode(1));
+        node.next.setNext(new SNode(2));
+
+        node.next = null;
+        assertNull(node.next);
+    }
+
+    @Test
+    public void testSNodeIsEmpty() {
+        SNode node = new SNode(0);
+        assertNull(node.next);
+
+        node.setNext(new SNode(1));
+        assertNotNull(node.next);
+
+        node.next = null;
+        assertNull(node.next);
+    }
 }
