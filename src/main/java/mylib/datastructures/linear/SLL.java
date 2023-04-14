@@ -6,19 +6,30 @@ public class SLL {
     private SNode tail;
     int size;
 
-
+    /**
+     * Default constructor
+     */
     public SLL() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Constructor with head node
+     * @param head the head node
+     */
     public SLL(SNode head) {
         this.head = head;
         this.tail = head;
         this.size = 1;
     }
 
+    /**
+     * Insert a node at the head of the list
+     * @param node the node to insert
+     * @returns the node inserted
+     */
     public void insertHead(SNode node) {
         if (this.head == null) {
             this.head = node;
@@ -30,6 +41,10 @@ public class SLL {
         this.size++;
     }
 
+    /**
+     * Insert a node at the tail of the list
+     * @param node the node to insert
+     */
     public void insertTail(SNode node) {
         if (this.head == null) {
             this.head = node;
@@ -40,6 +55,11 @@ public class SLL {
         this.size++;
     }
 
+    /**
+     * Insert a node at a given position
+     * @param node the node to insert
+     * @param pos the position to insert the node
+     */
     public void insert(SNode node, int pos) {
         if (pos < 0 || pos > this.size) {
             throw new IndexOutOfBoundsException();
@@ -58,6 +78,10 @@ public class SLL {
         }
     }
 
+    /**
+     * Insert a node in a sorted list
+     * @param node the node to insert
+     */
     public void sortedInsert(SNode node) {
         if (!isSorted()) {
             sort();
@@ -80,6 +104,10 @@ public class SLL {
         }
     }
 
+    /**
+     * Checks if the list is sorted
+     * @return true if the list is sorted, false otherwise
+     */
     private boolean isSorted() {
         if (this.head == null) {
             return true;
@@ -94,6 +122,11 @@ public class SLL {
         return true;
     }
 
+    /**
+     * Finds the position to insert a node in a sorted list
+     * @param node the node to insert
+     * @return the position to insert the node
+     */
     public SNode search(SNode node) {
         SNode curr = this.head;
         while (curr != null) {
@@ -105,6 +138,9 @@ public class SLL {
         return null;
     }
 
+    /**
+     * Deletes the head node
+     */
     public void deleteHead() {
         if (this.head == null) {
             throw new NullPointerException();
@@ -117,6 +153,9 @@ public class SLL {
         this.size--;
     }
 
+    /**
+     * Deletes the tail node
+     */
     public void deleteTail() {
         if (this.head == null) {
             throw new NullPointerException();
@@ -134,6 +173,10 @@ public class SLL {
         this.size--;
     }
 
+    /**
+     * Deletes a node at a given position
+     * @param node the node to delete
+     */
     public void delete(SNode node) {
         if (this.head == null) {
             throw new NullPointerException();
@@ -154,6 +197,9 @@ public class SLL {
         }
     }
 
+    /**
+     * Deletes a node with a given value
+     */
     public void sort() {
         if (this.size <= 1 || isSorted()) {
             return; // list is already sorted
@@ -180,6 +226,11 @@ public class SLL {
         }
     }
 
+    /**
+     * Finds the position to insert a node in a sorted list
+     * @param node the node to insert
+     * @return the position to insert the node
+     */
     private SNode findInsertPosition(SNode node) {
         SNode curr = this.head;
         SNode prev = null;
@@ -190,12 +241,18 @@ public class SLL {
         return prev != null ? prev : this.head;
     }
 
+    /**
+     * Clears the list
+     */
     public void clear() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Prints the list
+     */
     public void print() {
         SNode current = head;
         int length = 0;
@@ -223,6 +280,9 @@ public class SLL {
         System.out.println("Sorted status: " + (sorted ? "sorted" : "unsorted"));
     }
 
+    /**
+     * Reverses the list
+     */
     public void reverse() {
         if (head == null || head.next == null) {
             return;
@@ -246,14 +306,26 @@ public class SLL {
 
     // getters and setters
 
+    /**
+     * Returns the head node
+     * @return the head node
+     */
     public SNode getHead() {
         return head;
     }
 
+    /**
+     * Returns the tail node
+     * @return the tail node
+     */
     public SNode getTail() {
         return tail;
     }
 
+    /**
+     * Returns the list size
+     * @return the list size
+     */
     public int getSize() {
         return size;
     }

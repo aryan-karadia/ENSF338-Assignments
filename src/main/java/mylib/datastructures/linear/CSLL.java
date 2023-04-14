@@ -9,18 +9,29 @@ public class CSLL extends SLL {
     private SNode tail;
     private int size;
 
+    /**
+     * Constructs an empty circular singly linked list.
+     */
     public CSLL() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Constructs a circular singly linked list with a single node.
+     * @param head the head of the list
+     */
     public CSLL(SNode head) {
         this.head = head;
         this.tail = head;
         this.size = 1;
     }
 
+    /**
+     * Inserts a node at the head of the list.
+     * @param node the node to insert
+     */
     public void insertHead(SNode node) {
         if (this.head == null) {
             this.head = node;
@@ -34,6 +45,10 @@ public class CSLL extends SLL {
         this.size++;
     }
 
+    /**
+     * Inserts a node at the tail of the list.
+     * @param node the node to insert
+     */
     public void insertTail(SNode node) {
         if (this.head == null) {
             this.head = node;
@@ -47,10 +62,19 @@ public class CSLL extends SLL {
         this.size++;
     }
 
+    /**
+     * Inserts a node at a given position in the list.
+     * @param node the node to insert
+     * @param pos the position to insert the node at
+     */
     public void insert(SNode node, int pos) {
         super.insert(node, pos);
     }
 
+    /**
+     * Inserts a node into a sorted list.
+     * @param node the node to insert
+     */
     public void sortedInsert(SNode node) {
         if (this.head == null) {
             this.head = node;
@@ -71,6 +95,10 @@ public class CSLL extends SLL {
         }
     }
 
+    /**
+     * Deletes a node from the list.
+     * @param node the node to delete
+     */
     public boolean isSorted() {
         if (this.head != null) {
             SNode prev = this.head;
@@ -86,6 +114,10 @@ public class CSLL extends SLL {
         return true;
     }
 
+    /**
+     * Searches for a node in the list.
+     * @param node the node to search for
+     */
     public SNode search(SNode node) {
         if (this.head != null) {
             SNode curr = this.head;
@@ -102,6 +134,9 @@ public class CSLL extends SLL {
         return null;
     }
 
+    /**
+     * Deletes the head of the list.
+     */
     public void deleteHead() {
         if (this.head == null) {
             throw new IndexOutOfBoundsException();
@@ -115,6 +150,9 @@ public class CSLL extends SLL {
         this.size--;
     }
 
+    /**
+     * Deletes the tail of the list.
+     */
     public void deleteTail() {
         if (this.head == null) {
             throw new IndexOutOfBoundsException();
@@ -132,6 +170,10 @@ public class CSLL extends SLL {
         this.size--;
     }
 
+    /**
+     * Deletes a node at a given position in the list.
+     * @param node the position to delete the node at
+     */
     public void delete(SNode node) {
         if (this.head == null) {
             throw new IndexOutOfBoundsException();
@@ -152,6 +194,9 @@ public class CSLL extends SLL {
         this.size--;
     }
 
+    /**
+     * Sorts the list.
+     */
     public void sort() {
         if (this.size <= 1 || isSorted()) {
             return;
@@ -172,6 +217,9 @@ public class CSLL extends SLL {
         }
     }
 
+    /**
+     * Removes The Head of the list.
+     */
     public SNode removeHead() {
         if (isEmpty()) {
             return null;
@@ -188,6 +236,9 @@ public class CSLL extends SLL {
         return removedNode;
     }
 
+    /**
+     * Removes The Tail of the list.
+     */
     public SNode removeTail() {
         if (isEmpty()) {
             throw new NoSuchElementException("List is empty");
@@ -208,10 +259,18 @@ public class CSLL extends SLL {
         return curr;
     }
 
+    /**
+     * Checks if the list is empty.
+     * @returns true if the list is empty, false otherwise
+     */
     public boolean isEmpty() {
         return this.head == null;
     }
 
+    /**
+     * Removes a node from the list.
+     * @param node the node to remove
+     */
     public SNode remove(SNode node) {
         if (isEmpty()) {
             throw new NoSuchElementException("List is empty");
@@ -231,6 +290,11 @@ public class CSLL extends SLL {
         return node;
     }
 
+    /**
+     * Checks if the list contains a node.
+     * @param node the node to check for
+     * @returns true if the list contains the node, false otherwise
+     */
     public boolean contains(SNode node) {
         if (this.head != null) {
             SNode curr = this.head;
@@ -245,6 +309,11 @@ public class CSLL extends SLL {
         return false;
     }
 
+    /**
+     * Gets the Node at a given position.
+     * @param pos the position of the node to get
+     * @returns the node at the given position
+     */
     public SNode getNode(int pos) {
         if (isEmpty()) {
             throw new NoSuchElementException("List is empty");
@@ -259,11 +328,16 @@ public class CSLL extends SLL {
         return curr;
     }
 
+    /**
+     * Clears the list.
+     */
     public void clear() {
         super.clear();
     }
 
-
+    /**
+     * Prints the list.
+     */
     public void print() {
         super.print();
     }
