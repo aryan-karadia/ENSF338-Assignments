@@ -10,4 +10,10 @@ public class DNode {
         this.next = null;
         this.prev = null;
     }
+
+    public DNode() {
+        this.value = 0;
+        this.next = null;
+        this.prev = null;
+    }
 }

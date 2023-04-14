@@ -1,21 +1,16 @@
 import mylib.datastructures.linear.SLL;
-import mylib.datastructures.nodes.SNode;
-
 import mylib.datastructures.linear.DLL;
-import mylib.datastructures.nodes.DNode;
-
 import mylib.datastructures.linear.CSLL;
-
 import mylib.datastructures.linear.CDLL;
-
 import mylib.datastructures.linear.StackLL;
 import mylib.datastructures.linear.QueueLL;
 
-import mylib.datastructures.nodes.TNode;
-import mylib.datastructures.trees.AVL;
-
-import mylib.datastructures.trees.BST;
+import mylib.datastructures.nodes.DNode;
 import mylib.datastructures.nodes.SNode;
+import mylib.datastructures.nodes.TNode;
+
+import mylib.datastructures.trees.AVL;
+import mylib.datastructures.trees.BST;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -943,7 +938,7 @@ public class Main {
     }
 
     @Test
-    void testQueueLLConstructor() {
+    public void testQueueLLConstructor() {
         SNode head = new SNode(1);
         QueueLL queue = new QueueLL(head);
 
@@ -951,7 +946,7 @@ public class Main {
     }
 
     @Test
-    void testQueueLLDisplay() {
+    public void testQueueLLDisplay() {
         SNode head = new SNode(1);
         SNode second = new SNode(2);
         SNode third = new SNode(3);
@@ -963,7 +958,7 @@ public class Main {
     }
 
     @Test
-    void testQueueLLIsSorted() {
+    public void testQueueLLIsSorted() {
         SNode head = new SNode(1);
         SNode second = new SNode(2);
         SNode third = new SNode(3);
@@ -1076,7 +1071,7 @@ public class Main {
     }
 
     @Test
-    public void testPrintInOrder() {
+    public void testAVLPrintInOrder() {
         avl.insert(4);
         avl.insert(2);
         avl.insert(3);
@@ -1088,7 +1083,7 @@ public class Main {
     }
 
     @Test
-    public void testPrintBF() {
+    public void testAVLPrintBF() {
         avl.insert(4);
         avl.insert(2);
         avl.insert(3);
@@ -1163,7 +1158,263 @@ public class Main {
         assertEquals(20, avl.getRoot().getRight().getRight().getData());
     }
 
+    /** Testing BST Class **/
+    @Test
+    public void testDefaultConstructor() {
+        BST bst = new BST();
+        assertNull(bst.getRoot());
+    }
 
+    @Test
+    public void testConstructorWithIntValue() {
+        BST bst = new BST(5);
+        assertNotNull(bst.getRoot());
+        assertEquals(5, bst.getRoot().getData());
+    }
 
+    @Test
+    public void testConstructorWithTNode() {
+        TNode node = new TNode(5, null, null, null, 0);
+        BST bst = new BST(node);
+        assertNotNull(bst.getRoot());
+        assertEquals(5, bst.getRoot().getData());
+    }
+
+    @Test
+    public void testBSTInsert() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        assertNotNull(bst.getRoot());
+        assertEquals(5, bst.getRoot().getData());
+        assertEquals(3, bst.getRoot().getLeft().getData());
+        assertEquals(7, bst.getRoot().getRight().getData());
+        assertEquals(1, bst.getRoot().getLeft().getLeft().getData());
+        assertEquals(9, bst.getRoot().getRight().getRight().getData());
+    }
+
+    @Test
+    public void testBSTDelete() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        bst.delete(3);
+        assertNotNull(bst.getRoot());
+        assertEquals(5, bst.getRoot().getData());
+        assertEquals(1, bst.getRoot().getLeft().getData());
+        assertEquals(7, bst.getRoot().getRight().getData());
+        assertEquals(9, bst.getRoot().getRight().getRight().getData());
+        bst.delete(5);
+        assertNotNull(bst.getRoot());
+        assertEquals(7, bst.getRoot().getData());
+        assertEquals(1, bst.getRoot().getLeft().getData());
+        assertEquals(9, bst.getRoot().getRight().getData());
+        bst.delete(7);
+        assertNotNull(bst.getRoot());
+        assertEquals(9, bst.getRoot().getData());
+        assertEquals(1, bst.getRoot().getLeft().getData());
+        assertNull(bst.getRoot().getRight());
+        bst.delete(9);
+        assertNull(bst.getRoot());
+    }
+
+    @Test
+    public void testBSTSearch() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        TNode node = bst.search(3);
+        assertNotNull(node);
+        assertEquals(3, node.getData());
+        node = bst.search(6);
+        assertNull(node);
+    }
+
+    @Test
+    public void testBSTPrintInOrder() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        bst.printInOrder();
+        // Output should be: 1 3 5 7 9
+    }
+
+    @Test
+    public void testBSTPrintBF() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(9);
+        bst.printBF();
+        // Output should be:
+        // 5
+        // 3 7
+        // 1 9
+    }
+
+    /** Testing TNode Class **/
+    @Test
+    public void testTNodeEmptyConstructor() {
+        TNode node = new TNode();
+        assertEquals(0, node.getData());
+        assertNull(node.getLeft());
+        assertNull(node.getRight());
+        assertNull(node.getParent());
+        assertEquals(0, node.getBalance());
+    }
+
+    @Test
+    public void testTNodeConstructorWithData() {
+        TNode leftChild = new TNode();
+        TNode rightChild = new TNode();
+        TNode parent = new TNode();
+        TNode node = new TNode(42, leftChild, rightChild, parent, -1);
+        assertEquals(42, node.getData());
+        assertEquals(leftChild, node.getLeft());
+        assertEquals(rightChild, node.getRight());
+        assertEquals(parent, node.getParent());
+        assertEquals(-1, node.getBalance());
+    }
+
+    @Test
+    public void testTNodeSettersAndGetters() {
+        TNode node = new TNode();
+        node.setData(42);
+        assertEquals(42, node.getData());
+
+        TNode leftChild = new TNode();
+        node.setLeft(leftChild);
+        assertEquals(leftChild, node.getLeft());
+
+        TNode rightChild = new TNode();
+        node.setRight(rightChild);
+        assertEquals(rightChild, node.getRight());
+
+        TNode parent = new TNode();
+        node.setParent(parent);
+        assertEquals(parent, node.getParent());
+
+        node.setBalance(-1);
+        assertEquals(-1, node.getBalance());
+    }
+
+    @Test
+    public void testTNodePrint() {
+        TNode node = new TNode(42, null, null, null, 1);
+        node.print(); // should print the node's information
+    }
+
+    @Test
+    public void testTNodeToString() {
+        TNode node = new TNode(42, null, null, null, 1);
+        assertEquals("42", node.toString());
+    }
+
+    /** Testing DNode Class **/
+
+    @Test
+    public void testDNodeEmptyConstructor() {
+        DNode node = new DNode();
+        assertNull(node.next);
+        assertNull(node.prev);
+    }
+
+    @Test
+    public void testDNodeConstructorWithValue() {
+        DNode node = new DNode(5);
+        assertEquals(5, node.value);
+        assertNull(node.next);
+        assertNull(node.prev);
+    }
+
+    @Test
+    public void testDNodeInsertIntoEmptyList() {
+        DNode head = null;
+        DNode node = new DNode(5);
+        head = node;
+        assertNull(node.prev);
+        assertNull(node.next);
+    }
+
+    @Test
+    public void testDNodeInsertBefore() {
+        DNode head = new DNode(5);
+        DNode node = new DNode(7);
+        node.prev = head;
+        head.next = node;
+        assertEquals(node, head.next);
+        assertEquals(head, node.prev);
+        assertNull(head.prev);
+        assertNull(node.next);
+    }
+
+    @Test
+    public void testDNodeInsertAfter() {
+        DNode head = new DNode(5);
+        DNode node = new DNode(7);
+        node.next = head;
+        head.prev = node;
+        assertEquals(node, head.prev);
+        assertEquals(head, node.next);
+        assertNull(head.next);
+        assertNull(node.prev);
+    }
+
+    @Test
+    public void testDNodeDelete() {
+        DNode head = new DNode(5);
+        DNode node = new DNode(7);
+        node.next = head;
+        head.prev = node;
+        head = head.prev;
+        assertNull(head.next);
+        assertNull(node.prev);
+    }
+
+    @Test
+    public void testDNodeClear() {
+        DNode head = new DNode(5);
+        DNode node1 = new DNode(7);
+        DNode node2 = new DNode(9);
+        node1.prev = head;
+        head.next = node1;
+        node2.prev = node1;
+        node1.next = node2;
+        head = null;
+        node1 = null;
+        node2 = null;
+        assertNull(head);
+        assertNull(node1);
+        assertNull(node2);
+    }
+
+    @Test
+    public void testDNodeIsEmpty() {
+        DNode head = new DNode(5);
+        DNode node1 = new DNode(7);
+        DNode node2 = new DNode(9);
+        node1.prev = head;
+        head.next = node1;
+        node2.prev = node1;
+        node1.next = node2;
+        head = null;
+        node1 = null;
+        node2 = null;
+        assertTrue(head == null && node1 == null && node2 == null);
+    }
 
 }
