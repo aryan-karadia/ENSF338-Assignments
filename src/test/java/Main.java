@@ -8,8 +8,9 @@ import mylib.datastructures.linear.CSLL;
 
 import mylib.datastructures.linear.CDLL;
 
-import mylib.datastructures.linear.QueueLL;
 import mylib.datastructures.linear.StackLL;
+import mylib.datastructures.linear.QueueLL;
+
 import mylib.datastructures.nodes.TNode;
 import mylib.datastructures.trees.AVL;
 import mylib.datastructures.trees.BST;
@@ -574,7 +575,7 @@ public class Main {
     }
 
     @Test
-    public void testInsertTail() {
+    public void testCDLLInsertTail() {
         CDLL list = new CDLL();
         DNode node = new DNode(1);
         list.insertTail(node);
@@ -584,7 +585,7 @@ public class Main {
     }
 
     @Test
-    public void testInsert() {
+    public void testCDLLInsert() {
         CDLL list = new CDLL();
         DNode node1 = new DNode(1);
         DNode node2 = new DNode(2);
@@ -857,7 +858,128 @@ public class Main {
         assertFalse(stack.isSorted());
     }
 
-    /** Testing StackLL **/
+    /** Testing QueueLL **/
+
+    @Test
+    public void testQueueLLEnqueue() {
+        QueueLL queue = new QueueLL();
+        SNode node = new SNode(1);
+        queue.enqueue(node);
+        assertEquals(node, queue.peek());
+    }
+
+    @Test
+    public void testQueueLLDequeue() {
+        QueueLL queue = new QueueLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        SNode node3 = new SNode(3);
+        queue.enqueue(node1);
+        queue.enqueue(node2);
+        queue.enqueue(node3);
+        assertEquals(node1, queue.dequeue());
+        assertEquals(node2, queue.dequeue());
+        assertEquals(node3, queue.dequeue());
+    }
+
+    @Test
+    public void testQueueLLPeek() {
+        QueueLL queue = new QueueLL();
+        SNode node = new SNode(1);
+        queue.enqueue(node);
+        assertEquals(node, queue.peek());
+    }
+
+    @Test
+    public void testQueueLLIsEmpty() {
+        QueueLL queue = new QueueLL();
+        assertTrue(queue.isEmpty());
+        SNode node = new SNode(1);
+        queue.enqueue(node);
+        assertFalse(queue.isEmpty());
+    }
+
+    @Test
+    public void testQueueLLClear() {
+        QueueLL queue = new QueueLL();
+        SNode node = new SNode(1);
+        queue.enqueue(node);
+        assertFalse(queue.isEmpty());
+        queue.clear();
+        assertTrue(queue.isEmpty());
+    }
+
+    @Test
+    public void testQueueLLInsertTail() {
+        QueueLL queue = new QueueLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        SNode node3 = new SNode(3);
+        queue.insertTail(node1);
+        assertEquals(node1, queue.peek());
+        queue.insertTail(node2);
+        assertEquals(node1, queue.peek());
+        queue.insertTail(node3);
+        assertEquals(node1, queue.peek());
+        assertEquals(3, queue.getSize());
+    }
+
+    @Test
+    public void testQueueLLInsert() {
+        QueueLL queue = new QueueLL();
+        SNode node1 = new SNode(1);
+        SNode node2 = new SNode(2);
+        SNode node3 = new SNode(3);
+        queue.insert(node1, 0);
+        assertEquals(node1, queue.peek());
+        queue.insert(node3, 1);
+        assertEquals(node1, queue.peek());
+        queue.insert(node2, 1);
+        assertEquals(node1, queue.peek());
+        assertEquals(3, queue.getSize());
+    }
+
+    @Test
+    void testQueueLLConstructor() {
+        SNode head = new SNode(1);
+        QueueLL queue = new QueueLL(head);
+
+        assertEquals(head, queue.getHead());
+    }
+
+    @Test
+    void testQueueLLDisplay() {
+        SNode head = new SNode(1);
+        SNode second = new SNode(2);
+        SNode third = new SNode(3);
+        head.setNext(second);
+        second.setNext(third);
+
+        QueueLL queue = new QueueLL(head);
+        queue.display(); // expects "1 -> 2 -> 3 -> null"
+    }
+
+    @Test
+    void testQueueLLIsSorted() {
+        SNode head = new SNode(1);
+        SNode second = new SNode(2);
+        SNode third = new SNode(3);
+        head.setNext(second);
+        second.setNext(third);
+
+        QueueLL queue = new QueueLL(head);
+        assertTrue(queue.isSorted());
+
+        SNode invalidHead = new SNode(3);
+        SNode invalidSecond = new SNode(1);
+        SNode invalidThird = new SNode(2);
+        invalidHead.setNext(invalidSecond);
+        invalidSecond.setNext(invalidThird);
+
+        QueueLL invalidQueue = new QueueLL(invalidHead);
+        assertFalse(invalidQueue.isSorted());
+    }
+
 
 
 

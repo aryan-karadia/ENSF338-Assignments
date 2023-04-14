@@ -9,4 +9,9 @@ public class SNode {
         this.next = null;
     }
 
+    public void setNext(SNode nextNode) {
+        this.next = nextNode;
+    }
+
+
 }
