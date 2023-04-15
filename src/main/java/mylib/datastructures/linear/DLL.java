@@ -3,9 +3,9 @@ import mylib.datastructures.nodes.DNode;
 
 public class DLL {
 
-    private DNode head;
-    private DNode tail;
-    private int size;
+    protected DNode head;
+    protected DNode tail;
+    protected int size;
 
     public DLL() {
         this.head = null;
@@ -44,7 +44,7 @@ public class DLL {
     }
 
     public void insert(DNode node, int pos) {
-        if (pos < 0 || pos > this.size) {
+        if (pos < 0 || pos > this.size + 1) {
             throw new IndexOutOfBoundsException();
         } else if (pos == 0) {
             this.insertHead(node);
@@ -142,22 +142,54 @@ public class DLL {
             return; // list is already sorted
         }
 
-        DNode current = null, index = null;
-        int temp;
+        DNode a, b;
+        DNode temp;
         //Check whether list is empty
         if(head == null) {
             return;
         }
         else {
             //Current will point to head
-            for(current = head; current.next != null; current = current.next) {
+            for(a = head; a.next != null; a = a.next) {
                 //Index will point to node next to current
-                for(index = current.next; index != null; index = index.next) {
+                for(b = a.next; b != null; b = b.next) {
                     //If current's data is greater than index's data, swap the data of current and index
-                    if(current.value > index.value) {
-                        temp = current.value;
-                        current.value = index.value;
-                        index.value = temp;
+                    if(a.value > b.value) {
+
+                        if (a.next == b) { // right next to each other
+                            a.next = b.next;
+                            b.prev = a.prev;
+
+                            if (a.next != null)
+                                a.next.prev = a;
+
+                            if (b.prev != null)
+                                b.prev.next = b;
+
+
+                            b.next = a;
+                            a.prev = b;
+                        } else {
+                            DNode p = b.prev;
+                            DNode n = b.next;
+
+                            b.prev = a.prev;
+                            b.next = a.next;
+
+                            a.prev = p;
+                            a.next = n;
+
+                            if (b.next != null)
+                                b.next.prev = b;
+                            if (b.prev != null)
+                                b.prev.next = b;
+
+                            if (a.next != null)
+                                a.next.prev = a;
+                            if (a.prev != null)
+                                a.prev.next = a;
+
+                        }
                     }
                 }
             }

@@ -12,7 +12,7 @@ public class QueueLL extends SLL {
         }
 
         public void enqueue(SNode node) {
-            this.insertTail(node);
+            super.insertTail(node);
         }
 
         public SNode dequeue() {

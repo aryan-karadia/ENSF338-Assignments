@@ -5,46 +5,42 @@ import java.util.NoSuchElementException;
 
 public class CSLL extends SLL {
 
-    private SNode head;
-    private SNode tail;
-    private int size;
-
     public CSLL() {
-        this.head = null;
-        this.tail = null;
-        this.size = 0;
+        super.head = null;
+        super.tail = null;
+        super.size = 0;
     }
 
     public CSLL(SNode head) {
-        this.head = head;
-        this.tail = head;
-        this.size = 1;
+        super.head = head;
+        super.tail = head;
+        super.size = 1;
     }
 
     public void insertHead(SNode node) {
-        if (this.head == null) {
-            this.head = node;
-            this.tail = node;
-            node.next = node;
+        if (super.head == null) {
+            super.head = node;
+            super.tail = node;
+            super.head.next = node;
         } else {
-            node.next = this.head;
-            this.head = node;
-            this.tail.next = this.head;
+            node.next = super.head;
+            super.head = node;
+            super.tail.next = super.head;
         }
-        this.size++;
+        super.size++;
     }
 
     public void insertTail(SNode node) {
-        if (this.head == null) {
-            this.head = node;
-            this.tail = node;
+        if (super.head == null) {
+            super.head = node;
+            super.tail = node;
             node.next = node;
         } else {
-            this.tail.next = node;
-            this.tail = node;
-            this.tail.next = this.head;
+            super.tail.next = node;
+            super.tail = node;
+            super.tail.next = super.head;
         }
-        this.size++;
+        super.size++;
     }
 
     public void insert(SNode node, int pos) {
@@ -52,30 +48,31 @@ public class CSLL extends SLL {
     }
 
     public void sortedInsert(SNode node) {
-        if (this.head == null) {
-            this.head = node;
-            this.tail = node;
+        if (super.head == null) {
+            super.head = node;
+            super.tail = node;
             node.next = node;
-        } else if (this.head.value >= node.value) {
+            super.size++;
+        } else if (super.head.value >= node.value) {
             this.insertHead(node);
-        } else if (this.tail.value <= node.value) {
+        } else if (super.tail.value <= node.value) {
             this.insertTail(node);
         } else {
-            SNode prev = this.head;
+            SNode prev = super.head;
             while (prev.next.value < node.value) {
                 prev = prev.next;
             }
             node.next = prev.next;
             prev.next = node;
-            this.size++;
+            super.size++;
         }
     }
 
     public boolean isSorted() {
-        if (this.head != null) {
-            SNode prev = this.head;
-            SNode curr = this.head.next;
-            while (curr != this.head) {
+        if (super.head != null) {
+            SNode prev = super.head;
+            SNode curr = super.head.next;
+            while (curr != super.head) {
                 if (prev.value > curr.value) {
                     return false;
                 }
@@ -87,9 +84,9 @@ public class CSLL extends SLL {
     }
 
     public SNode search(SNode node) {
-        if (this.head != null) {
-            SNode curr = this.head;
-            while (curr != this.tail) {
+        if (super.head != null) {
+            SNode curr = super.head;
+            while (curr != super.tail) {
                 if (curr.value == node.value) {
                     return curr;
                 }
@@ -103,67 +100,67 @@ public class CSLL extends SLL {
     }
 
     public void deleteHead() {
-        if (this.head == null) {
+        if (super.head == null) {
             throw new IndexOutOfBoundsException();
-        } else if (this.head == this.tail) {
-            this.head = null;
-            this.tail = null;
+        } else if (super.head == super.tail) {
+            super.head = null;
+            super.tail = null;
         } else {
-            this.head = this.head.next;
-            this.tail.next = this.head;
+            super.head = super.head.next;
+            super.tail.next = super.head;
         }
-        this.size--;
+        super.size--;
     }
 
     public void deleteTail() {
-        if (this.head == null) {
+        if (super.head == null) {
             throw new IndexOutOfBoundsException();
-        } else if (this.head == this.tail) {
-            this.head = null;
-            this.tail = null;
+        } else if (super.head == super.tail) {
+            super.head = null;
+            super.tail = null;
         } else {
-            SNode prev = this.head;
-            while (prev.next != this.tail) {
+            SNode prev = super.head;
+            while (prev.next != super.tail) {
                 prev = prev.next;
             }
-            prev.next = this.head;
-            this.tail = prev;
+            prev.next = super.head;
+            super.tail = prev;
         }
-        this.size--;
+        super.size--;
     }
 
     public void delete(SNode node) {
-        if (this.head == null) {
+        if (super.head == null) {
             throw new IndexOutOfBoundsException();
-        } else if (this.head == this.tail) {
-            this.head = null;
-            this.tail = null;
-        } else if (this.head == node) {
+        } else if (super.head == super.tail) {
+            super.head = null;
+            super.tail = null;
+        } else if (super.head == node) {
             this.deleteHead();
-        } else if (this.tail == node) {
+        } else if (super.tail == node) {
             this.deleteTail();
         } else {
-            SNode prev = this.head;
+            SNode prev = super.head;
             while (prev.next != node) {
                 prev = prev.next;
             }
             prev.next = node.next;
         }
-        this.size--;
+        super.size--;
     }
 
     public void sort() {
-        if (this.size <= 1 || isSorted()) {
+        if (super.size <= 1 || isSorted()) {
             return;
         }
-        SNode prev = this.head;
-        SNode curr = this.head.next;
-        SNode next = this.head.next.next;
-        while (curr != this.head) {
+        SNode prev = super.head;
+        SNode curr = super.head.next;
+        SNode next = super.head.next.next;
+        while (curr != super.head) {
             if (prev.value > curr.value) {
                 prev.next = next;
-                curr.next = this.head;
-                this.head = curr;
+                curr.next = super.head;
+                super.head = curr;
             } else {
                 prev = curr;
             }
@@ -202,14 +199,15 @@ public class CSLL extends SLL {
         while (curr.next != tail) {
             curr = curr.next;
         }
+        SNode temp = tail;
         curr.next = head;
-        tail = curr;
+        super.tail = curr;
         size--;
-        return curr;
+        return temp;
     }
 
     public boolean isEmpty() {
-        return this.head == null;
+        return super.head == null;
     }
 
     public SNode remove(SNode node) {
@@ -232,9 +230,9 @@ public class CSLL extends SLL {
     }
 
     public boolean contains(SNode node) {
-        if (this.head != null) {
-            SNode curr = this.head;
-            while (curr != this.tail) {
+        if (super.head != null) {
+            SNode curr = super.head;
+            while (curr != super.tail) {
                 if (curr == node) {
                     return true;
                 }
@@ -266,5 +264,17 @@ public class CSLL extends SLL {
 
     public void print() {
         super.print();
+    }
+
+    public int getSize() {
+        return super.size;
+    }
+
+    public SNode getHead() {
+        return super.head;
+    }
+
+    public SNode getTail() {
+        return super.tail;
     }
 }

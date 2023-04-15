@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="Updated Sort function in DLL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Main.java" afterDir="false" />
     </list>
@@ -37,7 +39,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OAcEF9beY14OzJEO1pwMwglYfm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -47,17 +49,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "E:/Desktop/ENSF338-Assignments",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Desktop/ENSF338-Assignments&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -82,6 +84,17 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created tests for SLL" />
     <MESSAGE value="Updated Sort function in DLL" />
@@ -90,21 +103,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Main.java</url>
-          <line>373</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="6" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
