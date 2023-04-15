@@ -10,41 +10,60 @@ public class BST {
 
     protected TNode root;
 
-    // default constructor
+    /**
+     * Default constructor
+     */
     public BST() {
         this.root = null;
     }
 
-    // constructor with int value
 
+    /**
+     * Constructor with int value
+     * @param data the value of the root node
+     */
     public BST(int data) {
         this.root = new TNode();
         this.root.setData(data);
     }
 
-    // constructor with TNode
-
+    /**
+     * Constructor with TNode
+     * @param obj the root node of the tree
+     */
     public BST(TNode obj) {
         this.root = obj;
     }
 
-    // setter and getter for root
-
+    /**
+     * Getter for root
+     * @return the root of the tree
+     */
     public TNode getRoot() {
         return root;
     }
 
+    /**
+     * Setter for root
+     * @param root the root of the tree
+     */
     public void setRoot(TNode root) {
         this.root = root;
     }
 
-    // creates a new node with data val to be inserted into the tree
+    /**
+     * Creates a new node with data val and inserts it into the tree
+     * @param val the value to be inserted
+     */
     public void insert(int val) {
         TNode newNode = new TNode(val, null, null, null, 0);
         insert(newNode);
     }
 
-    // inserts the node passed as argument into the tree
+    /**
+     * Inserts the node passed as argument into the tree
+     * @param newNode
+     */
     public void insert(TNode newNode) {
         TNode temp = this.root;
         TNode parent = null;
@@ -66,12 +85,21 @@ public class BST {
         }
     }
 
-    // finds the node with val as data and deletes it, if not found prints
-    //a statement that the value is not in the tree
+
+    /**
+     * Finds the node with val as data and deletes it, if not found prints a statement that the value is not in the tree
+     * @param val the value to be deleted
+     */
     public void delete(int val) {
         this.root = deleteHelper(this.root, val);
     }
 
+    /**
+     * Helper method for delete
+     * @param node the root of the tree
+     * @param val the value to be deleted
+     * @return null if the node is a leaf node, the right child if the node has only one child (right), the left child if the node has only one child (left), the successor if the node has two children
+     */
     private TNode deleteHelper(TNode node, int val) {
         if (node == null) {
             System.out.println("Value not found in the tree.");
@@ -107,6 +135,11 @@ public class BST {
         return node;
     }
 
+    /**
+     * Finds the minimum node in the tree
+     * @param node the root of the tree
+     * @return the minimum node in the tree
+     */
     private TNode findMin(TNode node) {
         while (node.getLeft() != null) {
             node = node.getLeft();
@@ -114,7 +147,12 @@ public class BST {
         return node;
     }
 
-    // searches for the node with val as adata and returens it or returns null if not found
+
+    /**
+     * Searches for the node with val as data and returns it or returns null if not found
+     * @param val the value to be searched
+     * @return the node with val as data or null if not found
+     */
     public TNode search(int val) {
         TNode temp = this.root;
         while (temp != null) {
@@ -129,12 +167,18 @@ public class BST {
         return null;
     }
 
-    // prints the tree in ascending order
+    /**
+     * Prints the tree in ascending order
+     */
     public void printInOrder() {
         printInOrderHelper(this.root);
         System.out.println();
     }
 
+    /**
+     * Helper method for printInOrder
+     * @param node the root of the tree
+     */
     private void printInOrderHelper(TNode node) {
         if (node != null) {
             printInOrderHelper(node.getLeft());
@@ -143,7 +187,9 @@ public class BST {
         }
     }
 
-    // prints the content of the tree in Breadth-First order, each level of the tree will be printed on a separate line
+    /**
+     * Prints the tree in breadth-first order, each level of the tree will be printed on a separate line
+     */
     public void printBF() {
         Queue<TNode> queue = new LinkedList<>();
         queue.offer(this.root);
