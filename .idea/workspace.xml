@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="added hamcrest, trying to compile tests">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/DNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/DNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/SNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/SNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/TNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/nodes/TNode.java" afterDir="false" />
-    </list>
+    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="added hamcrest, trying to compile tests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,16 +80,5 @@
     <MESSAGE value="created tests for SLL" />
     <MESSAGE value="Updated Sort function in DLL" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated Sort function in DLL" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java</url>
-          <line>148</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
