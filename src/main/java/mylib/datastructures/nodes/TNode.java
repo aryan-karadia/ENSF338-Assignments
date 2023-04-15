@@ -18,7 +18,7 @@ public class TNode {
         this.balance = 0;
     }
     /**
-     * Constructs a Porcupine object with the given animal ID, name, and care needed list.
+     * Constructs for TNode with given data
      * @param data the data to be stored in the node
      * @param left the left child of the node
      * @param right the right child of the node
