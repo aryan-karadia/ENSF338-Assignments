@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="Updated Sort function in DLL">
+    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="Fixing Tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" afterDir="false" />
@@ -81,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681320311282</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixing Tests">
+      <created>1681517437777</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681517437777</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -98,7 +105,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created tests for SLL" />
     <MESSAGE value="Updated Sort function in DLL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Sort function in DLL" />
+    <MESSAGE value="Fixing Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
