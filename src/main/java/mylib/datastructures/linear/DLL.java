@@ -7,18 +7,30 @@ public class DLL {
     protected DNode tail;
     protected int size;
 
+    /**
+     * Default constructor
+     */
     public DLL() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Constructor with head node
+     * @param head
+     */
     public DLL(DNode head) {
         this.head = head;
         this.tail = head;
         this.size = 1;
     }
 
+    /**
+     * Insert a node at the head of the list
+     * @param node the node to insert
+     * @returns the node inserted
+     */
     public void insertHead(DNode node) {
         if (this.head == null) {
             this.head = node;
@@ -31,7 +43,11 @@ public class DLL {
         }
         this.size++;
     }
-
+    /**
+     * Insert a node at the tail of the list
+     * @param node the node to insert
+     * @returns the node inserted
+     */
     public void insertTail(DNode node) {
         if (this.head == null) {
             this.head = node;
@@ -42,7 +58,12 @@ public class DLL {
         this.tail = node;
         this.size++;
     }
-
+    /**
+     * Inserts a node at a given position
+     * @param node the node to insert
+     * @param pos the position to insert the node
+     * @returns the node inserted
+     */
     public void insert(DNode node, int pos) {
         if (pos < 0 || pos > this.size + 1) {
             throw new IndexOutOfBoundsException();
@@ -63,6 +84,10 @@ public class DLL {
         }
     }
 
+    /**
+     * Checks if the list is sorted
+     * @returns true if the list is sorted, false otherwise
+     */
     public boolean isSorted() {
         DNode curr = this.head;
         while (curr.next != null) {
@@ -74,6 +99,11 @@ public class DLL {
         return true;
     }
 
+    /**
+     * Search for a node in the list
+     * @param node the node to search for
+     * @returns the node if found, null otherwise
+     */
     public DNode search(DNode node) {
         DNode curr = this.head;
         while (curr != null) {
@@ -85,6 +115,9 @@ public class DLL {
         return null;
     }
 
+    /**
+     * Deletes the head node
+     */
     public void deleteHead() {
         if (this.head == null) {
             throw new NullPointerException();
@@ -98,6 +131,9 @@ public class DLL {
         this.size--;
     }
 
+    /**
+     * Deletes the tail node
+     */
     public void deleteTail() {
         if (this.head == null) {
             throw new NullPointerException();
@@ -111,6 +147,11 @@ public class DLL {
         this.size--;
     }
 
+    /**
+     * Deletes a node at a given position
+     * @param node the node to delete
+     * @returns true if the node was deleted, false otherwise
+     */
     public boolean delete(DNode node) {
         if (this.head == null) {
             throw new NullPointerException();
@@ -137,6 +178,10 @@ public class DLL {
         return false;
     }
 
+    /**
+     * Sorts the list
+     * @returns the sorted list
+     */
     public void sort() {
         if (this.size <= 1 || isSorted()) {
             return; // list is already sorted
@@ -196,6 +241,11 @@ public class DLL {
         }
     }
 
+    /**
+     * Finds the position to insert a node
+     * @param node the node to insert
+     * @returns the node before the position to insert
+     */
     private DNode findInsertPosition(DNode node) {
         DNode curr = this.head;
         DNode prev = null;
@@ -206,12 +256,18 @@ public class DLL {
         return prev != null ? prev : this.head;
     }
 
+    /**
+     * Clears the list
+     */
     public void clear() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Prints the list
+     */
     public void print() {
         DNode current = head;
         int length = 0;
@@ -239,14 +295,23 @@ public class DLL {
         System.out.println("Sorted status: " + (sorted ? "sorted" : "unsorted"));
     }
 
+    /**
+     * Gets the head node
+     */
     public DNode getHead() {
         return head;
     }
 
+    /**
+     * Gets the Tail
+     */
     public DNode getTail() {
         return tail;
     }
 
+    /**
+     * Gets the size
+     */
     public int getSize() {
         return size;
     }

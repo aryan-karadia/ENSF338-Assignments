@@ -7,6 +7,9 @@ public class TNode {
     private TNode parent;
     private int balance;
 
+    /**
+     * Constructor for a TNode
+     */
     public TNode() {
         this.data = 0;
         this.left = null;
@@ -14,7 +17,14 @@ public class TNode {
         this.parent = null;
         this.balance = 0;
     }
-
+    /**
+     * Constructs a Porcupine object with the given animal ID, name, and care needed list.
+     * @param data the data to be stored in the node
+     * @param left the left child of the node
+     * @param right the right child of the node
+     * @param parent the parent of the node
+     * @param balance the balance of the node
+     */
     public TNode(int data, TNode left, TNode right, TNode parent, int balance) {
         this.data = data;
         this.left = left;
