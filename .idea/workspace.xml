@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="added hamcrest, trying to compile tests" />
+    <list default="true" id="fe91f1ba-cea5-47f9-90cf-cc541ef64c05" name="Changes" comment="Fixing Tests">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CDLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/CSLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/DLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/QueueLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mylib/datastructures/linear/SLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +39,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OAcEF9beY14OzJEO1pwMwglYfm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -73,12 +81,44 @@
       <option name="project" value="LOCAL" />
       <updated>1681320311282</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixing Tests">
+      <created>1681517437777</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681517437777</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created tests for SLL" />
     <MESSAGE value="Updated Sort function in DLL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Sort function in DLL" />
+    <MESSAGE value="Fixing Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing Tests" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="6" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> bc7d117b4a4a73a580f402bd6a4ffece9f503e8f
 </project>

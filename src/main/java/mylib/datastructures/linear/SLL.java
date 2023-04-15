@@ -2,9 +2,9 @@ package mylib.datastructures.linear;
 import mylib.datastructures.nodes.SNode;
 
 public class SLL {
-    SNode head;
-    private SNode tail;
-    int size;
+    protected SNode head;
+    protected SNode tail;
+    protected int size;
 
     /**
      * Default constructor
@@ -61,7 +61,7 @@ public class SLL {
      * @param pos the position to insert the node
      */
     public void insert(SNode node, int pos) {
-        if (pos < 0 || pos > this.size) {
+        if (pos < 0 || pos > this.size + 1) {
             throw new IndexOutOfBoundsException();
         } else if (pos == 0) {
             this.insertHead(node);
@@ -89,6 +89,7 @@ public class SLL {
         if (this.head == null) {
             this.head = node;
             this.tail = node;
+            this.size++;
         } else if (node.value < this.head.value) {
             this.insertHead(node);
         } else if (node.value > this.tail.value) {
@@ -311,7 +312,7 @@ public class SLL {
      * @return the head node
      */
     public SNode getHead() {
-        return head;
+        return this.head;
     }
 
     /**
@@ -319,7 +320,7 @@ public class SLL {
      * @return the tail node
      */
     public SNode getTail() {
-        return tail;
+        return this.tail;
     }
 
     /**
@@ -327,7 +328,7 @@ public class SLL {
      * @return the list size
      */
     public int getSize() {
-        return size;
+        return this.size;
     }
 
 }

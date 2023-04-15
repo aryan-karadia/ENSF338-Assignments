@@ -23,7 +23,7 @@ public class QueueLL extends SLL {
      * @param node
      */
         public void enqueue(SNode node) {
-            this.insertTail(node);
+            super.insertTail(node);
         }
 
     /**
